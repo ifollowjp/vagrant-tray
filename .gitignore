@@ -57,3 +57,10 @@ typings/
 # dotenv environment variables file
 .env
 
+# wastes
+waste
+waste-*
+waste.*
+z*.waste
+z*-waste-*
+z*.waste.*
