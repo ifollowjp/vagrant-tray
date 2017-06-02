@@ -1,0 +1,6 @@
+{
+  "name": "vagrant-tray",
+  "version": "0.1.0",
+  "description": "vagrant icon in the tray.",
+  "main":    "main.js"
+}

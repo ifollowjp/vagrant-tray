@@ -1,0 +1,107 @@
+@charset "UTF-8";
+
+html, body {
+	position:     relative;
+	height:       100%;
+	width:        100%;
+	margin:       0;
+	padding:      0;
+}
+.body-about {
+	position:     relative;
+	overflow:     hidden;
+	height:       100%;
+	width:        100%;
+	background:   #ffffff;
+	box-sizing:   border-box;
+}
+
+.body-about #bg {
+	height:           100%;
+	width:            100%;
+	padding:          0;
+	margin:           20px;
+	display:          flex;
+	flex-direction:   column;
+	flex-wrap:        nowrap;
+	justify-content:  center;
+	align-items:      stretch;
+	align-content:    stretch;
+}
+.body-about #bg #header-bg {
+	display:          flex;
+	flex:             0 0 4px;
+}
+.body-about #bg #main-bg {
+	display:          flex;
+	flex:             1 1 auto;
+}
+.body-about #bg #footer-bg {
+	display:          flex;
+
+	flex:             0 0 4px;
+}
+
+.body-about .main {
+	width:            100%;
+	height:           100%;
+}
+.body-about .main-section {
+	height:           auto;
+	width:            100%;
+	padding:          8px 0px;
+	margin:           0px;
+	display:          flex;
+	flex-direction:   row;
+	flex-wrap:        nowrap;
+	justify-content:  center;
+	align-items:      stretch;
+	align-content:    stretch;
+}
+.body-about .main-section .icon {
+	display:          flex;
+	flex-direction:   row;
+	flex-wrap:        nowrap;
+	justify-content:  center;
+	flex:             0 0 88px;
+
+}
+.body-about .main-section .description {
+	flex:             1 1 auto;
+}
+.body-about .main-section .description ul {
+	list-style-type:  none;
+	padding-left:     8px;
+	margin:           0px;
+	width:            100%;
+	height:           100%;
+	display:          flex;
+	flex-direction:   column;
+	justify-content:  flex-end;
+}
+.body-about .main-section .description li {
+	line-height:      1.4em;
+	flex:             0 0 1.4em;
+}
+.body-about .main-section .libraries {
+	flex:             1 1 auto;
+	margin-left:      8px;
+}
+.body-about .main-section .libraries h4 {
+	margin:           8px 0px 4px 4px;
+}
+.body-about .main-section .libraries ul {
+	list-style-type:  square;
+	padding-left:     40px;
+	margin:           0px;
+	width:            100%;
+	height:           auto;
+	display:          flex;
+	flex-direction:   column;
+	justify-content:  flex-end;
+}
+.body-about .main-section .libraries li {
+	line-height:      1.4em;
+	flex:             0 0 1.4em;
+}
+
