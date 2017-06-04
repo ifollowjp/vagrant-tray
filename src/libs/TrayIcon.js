@@ -82,6 +82,7 @@ module.exports = new (function TrayIcon() {
         let data         = {};
         let icon         = '';
         let has          = '';
+        let enableds     = {};
         if ( ids.length > 0 ) {
             for ( let i=0 ; i<ids.length ; i++ ) {
                 id       = ids[i];
@@ -91,20 +92,49 @@ module.exports = new (function TrayIcon() {
                 if ( has !== true ) {
                     icon = ICONS.VAGRANT;
                 }
+                switch ( data.state ) {
+                    case 'running':
+                        enableds = { up: false, halt: true,  reload: true,  suspend: true,  resume: false };
+                        break;
+                    case 'poweroff':
+                        enableds = { up: true,  halt: false, reload: true,  suspend: false, resume: false };
+                        break;
+                    case 'saved':
+                        enableds = { up: false, halt: true,  reload: true,  suspend: false, resume: true  };
+                        break;
+                    default:
+                        enableds = { up: false, halt: false, reload: false, suspend: false, resume: false };
+                        break;
+                }
                 submenu  = [];
                 submenu.push({
                     icon:       ICONS.VAGRANTUP,
                     label:      'vagrant up ' + id,
+                    enabled:    enableds.up,
                     click:      _runVagrant,
                 });
                 submenu.push({
                     icon:       ICONS.VAGRANTHALT,
                     label:      'vagrant halt ' + id,
+                    enabled:    enableds.halt,
                     click:      _runVagrant,
                 });
                 submenu.push({
                     icon:       ICONS.VAGRANTRELOAD,
                     label:      'vagrant reload ' + id,
+                    enabled:    enableds.reload,
+                    click:      _runVagrant,
+                });
+                submenu.push({
+                    icon:       ICONS.VAGRANTSUSPEND,
+                    label:      'vagrant suspend ' + id,
+                    enabled:    enableds.suspend,
+                    click:      _runVagrant,
+                });
+                submenu.push({
+                    icon:       ICONS.VAGRANTRESUME,
+                    label:      'vagrant resume ' + id,
+                    enabled:    enableds.resume,
                     click:      _runVagrant,
                 });
                 menu.push({
