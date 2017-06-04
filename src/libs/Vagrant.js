@@ -14,6 +14,13 @@ module.exports = new (function Vagrant() {
     const self = this;
 
     /**
+     * モジュール DateFormat
+     *
+     * @type    {DateFormat}
+     */
+    const DateFormat = $IF.get('./libs/DateFormat.js');
+
+    /**
      * NodeVagrant クラス
      *
      * @type    {NodeVagrant}
@@ -70,6 +77,20 @@ module.exports = new (function Vagrant() {
         suspend: true,
         resume:  true,
     };
+
+    /**
+     * ステータスの最終更新日時
+     *
+     * @type    {Number}
+     */
+    let lastUpdateTime = 0;
+
+    /**
+     * ステータスの更新最短間隔
+     *
+     * @type    {Number}
+     */
+    const UPDATE_MIN_INTERVAL = 10000;
 
     // -------------------------------------------------------------------------
     /**
@@ -129,6 +150,15 @@ module.exports = new (function Vagrant() {
      * @return  {Boolean}   true
      */
     const _update = function _update() {
+        const thisTime   = (new Date()).getTime();
+        const interval   = thisTime - lastUpdateTime;
+        if ( interval < UPDATE_MIN_INTERVAL ) {
+            Log.info('Too early to update global-status of vagrant. [' + (interval/1000.0) + 'sec from ' + DateFormat.strftime('%Y/%m/%d %H:%M:%S.%3N', lastUpdateTime/1000.0) + '] ');
+            return true;
+        } else {
+            Log.info('Update global-status of vagrant.');
+        }
+        lastUpdateTime = thisTime;
         NodeVagrant.globalStatus(_updateStatus);
         return true;
     };
