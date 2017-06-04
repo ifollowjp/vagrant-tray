@@ -55,6 +55,8 @@ module.exports = new (function $IF() {
         VAGRANTUP:      './img/icon-playstart-16.png',
         VAGRANTHALT:    './img/icon-playstop-16.png',
         VAGRANTRELOAD:  './img/icon-playback-16.png',
+        VAGRANTSUSPEND: './img/icon-playpause-16.png',
+        VAGRANTRESUME:  './img/icon-playstart-16.png',
     };
 
     // -------------------------------------------------------------------------
