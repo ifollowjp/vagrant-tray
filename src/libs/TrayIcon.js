@@ -216,6 +216,7 @@ module.exports = new (function TrayIcon() {
      * @private
      */
     const _showContextMenu = function _showContextMenu() {
+        Vagrant.updateStatus();
         return instance.popUpContextMenu();
     };
 
