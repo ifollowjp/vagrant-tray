@@ -131,7 +131,7 @@ module.exports = new (function Vagrant() {
      * @method
      * @return  {Boolean}   true
      */
-    self.updateStatus = function update() {
+    self.updateStatus = function updateStatus() {
         return _update();
     };
 
