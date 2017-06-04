@@ -126,18 +126,18 @@ module.exports = new (function TrayIcon() {
         menu.push({ type: 'separator' });
         menu.push({
             icon:               ICONS.ABOUT,
-            label:              'このアプリについて ...',
+            label:              'About ...',
             click:              _showAboutWindow,
         });
         menu.push({ type: 'separator' });
         menu.push({
             icon:               ICONS.RESTART,
-            label:              '再起動する',
+            label:              'Restart this application',
             click:              _restartApp,
         });
         menu.push({
             icon:               ICONS.QUIT,
-            label:              'アプリケーションを終了する',
+            label:              'Quit this application',
             click:              _quitApp,
             accelerator:        'Shift+CmdOrCtrl+Q',
         });
