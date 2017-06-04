@@ -64,9 +64,11 @@ module.exports = new (function Vagrant() {
      * @type    {Object}
      */
     const VALID_COMMANDS = {
-        up:     true,
-        halt:   true,
-        reload: true,
+        up:      true,
+        halt:    true,
+        reload:  true,
+        suspend: true,
+        resume:  true,
     };
 
     // -------------------------------------------------------------------------
