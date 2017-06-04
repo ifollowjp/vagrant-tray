@@ -146,22 +146,6 @@ module.exports = new (function TrayIcon() {
     };
 
     /**
-     * アバウトウィンドウを開く
-     *
-     * @type    {Function}
-     * @method
-     * @param   {MenuItem}          menuItem
-     * @param   {BrowserWindow}     browserWindow
-     * @param   {EventEmitter}      event
-     * @return  {Boolean}           true
-     * @private
-     */
-    const _showAboutWindow = function _showAboutWindow(menuItem, browserWindow, event) {
-        $IF.get('./libs/AboutWindow.js').show();
-        return true;
-    };
-
-    /**
      * ツールチップやメニューを更新する
      *
      * @method
@@ -233,6 +217,22 @@ module.exports = new (function TrayIcon() {
      */
     const _showContextMenu = function _showContextMenu() {
         return instance.popUpContextMenu();
+    };
+
+    /**
+     * アバウトウィンドウを開く
+     *
+     * @type    {Function}
+     * @method
+     * @param   {MenuItem}          menuItem
+     * @param   {BrowserWindow}     browserWindow
+     * @param   {EventEmitter}      event
+     * @return  {Boolean}           true
+     * @private
+     */
+    const _showAboutWindow = function _showAboutWindow(menuItem, browserWindow, event) {
+        $IF.get('./libs/AboutWindow.js').show();
+        return true;
     };
 
     /**
