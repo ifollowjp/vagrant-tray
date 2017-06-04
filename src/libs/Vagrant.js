@@ -21,6 +21,13 @@ module.exports = new (function Vagrant() {
     const NodeVagrant = require('node-vagrant');
 
     /**
+     * ChildProcess クラス
+     *
+     * @type    {ChildProcess}
+     */
+    const ChildProcess = require('child_process');
+
+    /**
      * Elevator クラス
      *
      * @type    {Elevator}
@@ -191,8 +198,13 @@ module.exports = new (function Vagrant() {
      */
     const _run = function _run(cmd, id) {
         const commands = ['vagrant', cmd, id];
-        Log.info("Execute with elevation ['" + commands.join("' '") + "']");
-        Elevator.executeSync(commands, {waitForTermination: true});
+        if ( process.platform === 'win32' ) {
+            Log.info("Execute with elevation ['" + commands.join("' '") + "']");
+            Elevator.executeSync(commands, {waitForTermination: true});
+        } else {
+            Log.info("Execute ['" + commands.join("' '") + "']");
+            ChildProcess.spawnSync(commands[0], commands.slice(1));
+        }
         _update();
         return response.status;
     };
