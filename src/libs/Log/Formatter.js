@@ -14,9 +14,9 @@ module.exports = new (function LogFormatter() {
     const self = this;
 
     /**
-     * モジュール Formatter
+     * モジュール DateFormat
      *
-     * @type    {Function}
+     * @type    {DateFormat}
      */
     const DateFormat = $IF.get('./libs/DateFormat.js');
 
