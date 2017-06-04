@@ -17,8 +17,6 @@
     "npm-run-all": "^1.2.0"
   },
   "dependencies": {
-    "electron-about-window": "^1.6.1",
-    "electron-in-page-search": "^1.2.3",
     "elevator": "^2.2.3",
     "node-vagrant": "^1.0.8"
   },
