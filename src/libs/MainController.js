@@ -90,6 +90,8 @@ module.exports = new (function MainController() {
     self.quit = function quit() {
         // トレイアイコンがあれば閉じる
         $IF.get('./libs/TrayIcon.js').quit();
+        // 明示的に終了(ウィンドウを解放)
+        $IF.get('./libs/AboutWindow.js').quit();
         Log.info('End ' + __PRODUCT__);
         App.quit();
         return true;
