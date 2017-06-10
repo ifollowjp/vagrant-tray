@@ -4,7 +4,13 @@
   "description": "vagrant icon in the tray.",
   "main": "index.js",
   "scripts": {
-    "start": "electron ./src"
+    "pack:osx":   "electron-packager --overwrite ./src --out=dist/osx --platform=darwin --arch=x64 --no-prune --asar --extra-resource=node_modules --icon=dist/assets/osx/appicon.icns && npm run codesign",
+    "pack:win64": "electron-packager --overwrite ./src --out=dist/win --platform=win32  --arch=x64 --no-prune --asar --extra-resource=node_modules --icon=dist/assets/win/appicon.ico  --electron-version=1.6.10",
+    "build":      "npm run build:win",
+    "build:win":  "npm run pack:win64",
+    "build:osx":  "npm run pack:osx",
+    "build:all":  "npm run pack:osx && npm run pack:win64",
+    "start":      "electron ./src"
   },
   "keywords": [],
   "author": "Masaki Hojo <info@ifollow.co.jp>",
@@ -20,5 +26,5 @@
     "elevator": "^2.2.3",
     "node-vagrant": "^1.0.8"
   },
-  "preferGlobal": true
+  "preferGlobal": false
 }
