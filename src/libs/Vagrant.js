@@ -215,8 +215,7 @@ module.exports = new (function Vagrant() {
      * @return  {Boolean}   true
      */
     const _updateTrayIcon = function _updateTrayIcon() {
-        $IF.get('./libs/TrayIcon.js').update();
-        return ids;
+        return $IF.get('./libs/TrayIcon.js').update();
     };
 
     /**
@@ -229,13 +228,27 @@ module.exports = new (function Vagrant() {
      * @return  {Boolean}   true
      */
     const _run = function _run(cmd, id) {
-        const commands = ['vagrant', cmd, id];
+        const commands   = ['vagrant', cmd, id];
+        let   response   = {};
         if ( process.platform === 'win32' ) {
             Log.info("Execute with elevation ['" + commands.join("' '") + "']");
-            Elevator.executeSync(commands, {waitForTermination: true});
+            try {
+                Elevator.executeSync(commands, {waitForTermination: true});
+                response = { status: 0 };
+            } catch (e) {
+                response = { status: 1 };
+                Log.error("Can't execute vagrant with elevation.");
+            }
         } else {
             Log.info("Execute ['" + commands.join("' '") + "']");
-            ChildProcess.spawnSync(commands[0], commands.slice(1));
+            response     = ChildProcess.spawnSync(commands[0], commands.slice(1));
+            if ( response.status !== 0 ) {
+                Log.error([
+                    'Cannot execute vagrant. [' + response.status + ']',
+                    'STDOUT: [' + response.stdout + ']',
+                    'STDERR: [' + response.stderr + ']',
+                ].join('\n'));
+            }
         }
         _update();
         return response.status;
